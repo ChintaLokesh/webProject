@@ -1,17 +1,14 @@
-name: runWebApp
+name: myfirstWebAppWorkflow
 on: push
 jobs:
-  build:
+  myFirstWebAppJob:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: set up jdk 17
+      - name: setup jdk 17
         uses: actions/setup-java@v1
         with:
-             java-version: 17
-      -  name: Build with maven
-         run: |
-               ls
-               mvn clean test -Dtestng="testng.xml"
-         
-  
+          java-version: 17
+      - name: Build with maven
+        run: |
+             mvn clean test -Dtestng="testng.xml"
