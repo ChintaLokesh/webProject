@@ -1,8 +1,8 @@
-name: firstWorkflow
+name: first workflow
 on: push
 jobs:
   firstjob:
     runs-on: ubuntu-latest
     steps:
-      - name: say Hello
-        run: echo "Hello World"
+      - name : run hello world
+        run: echo "Hello world"
