@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: setup java 
-      - uses: actions/checkout@v1
+        uses: actions/checkout@v1
         with:
           java-version: 11
       - name: run with maven
