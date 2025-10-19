@@ -17,6 +17,7 @@ public class SecondTest extends BaseClass {
     @BeforeClass
     public void conf()
     {
+
         log.info("Before Method started");
         reUsableMethods= new ReUsableMethods(driver);
     }

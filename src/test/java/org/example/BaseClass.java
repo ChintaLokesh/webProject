@@ -36,18 +36,24 @@ private final Logger log = LogManager.getLogger(BaseClass.class);
                 log.info("Browser Type passed from command prompt is:",browserType);
                 EdgeOptions options = new EdgeOptions();
                 options.addArguments("--headless");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
                 options.setAcceptInsecureCerts(true);
-                URL url = new URL("http://192.168.1.10:4444/wd/hub");
+//                URL url = new URL("http://192.168.1.10:4444/wd/hub");
 
-                driver = new RemoteWebDriver(url, options);
+//                driver = new RemoteWebDriver(url, options);
+                driver = new EdgeDriver();
                 driver.get("https://vins-udemy.s3.amazonaws.com/ds/strategy.html");
             }
-            else if(browserType.equals("chrome"))
+            else if(browserType.equals("chrome") )
             {
                 log.info("Browser Type passed from command prompt is:",browserType);
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--headless");
-                driver=new RemoteWebDriver(new URL("http://192.168.1.10:4444/wd/hub"),options);
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+//                driver=new RemoteWebDriver(new URL("http://192.168.1.10:4444/wd/hub"),options);
+
                 driver.get("https://vins-udemy.s3.amazonaws.com/ds/strategy.html");
             }
             else if(browserType.equalsIgnoreCase("local"))

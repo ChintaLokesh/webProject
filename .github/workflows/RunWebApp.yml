@@ -1,5 +1,5 @@
 name: myfirstWebAppWorkflow
-on: push
+on: workflow_dispatch
 jobs:
   myFirstWebAppJob:
     runs-on: ubuntu-latest
