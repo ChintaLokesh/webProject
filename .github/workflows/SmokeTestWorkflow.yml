@@ -1,0 +1,21 @@
+name: Run Hello World
+on: push
+jobs:
+  firstJob:
+    runs-on: ubuntu-latest
+    steps: 
+        - name: Hello world
+          run: echo "Hello world" 
+  secondJob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: set up jdk
+        uses: actions/setup-java@v1
+        with:
+          java-version: 17
+      - name: Build with maven
+        run:
+            |
+            mvn clean test -Dtestng="testng.xml"
+  
