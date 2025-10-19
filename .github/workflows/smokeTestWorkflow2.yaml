@@ -1,0 +1,14 @@
+name: smoke test workflow1
+on: push
+jobs:
+  mySmokeTestWorkflow2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: setup java 
+      - uses: actions/checkout@v1
+        with:
+          java-version: 11
+      - name: run with maven
+        run: |
+              mvn clean test -Dtestng="tesng.xml" -Dbrowser="chrome"
