@@ -27,7 +27,7 @@ public class ReUsableMethods {
             File file = new File(System.getProperty("user.dir")+"/Screenshots");
             file.mkdir();
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String fileName=LocalDateTime.now().format(formatter).toString()+name;
+            String fileName=LocalDateTime.now().format(formatter).toString()+"_"+name;
             FileUtils.copyFile(src, new File(System.getProperty("user.dir") + "/Screenshots/" + fileName+".png"));
         }
         catch(IOException exception)
