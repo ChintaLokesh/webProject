@@ -11,4 +11,4 @@ jobs:
           java-version: 11
       - name: run with maven
         run: |
-              mvn clean test -Dtestng="testng.xml" -Dbrowser="chrome"
+              mvn clean test -Dtestng="testng.xml" -DbrowserType="chrome"
