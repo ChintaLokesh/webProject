@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -42,18 +43,19 @@ private final Logger log = LogManager.getLogger(BaseClass.class);
 //                URL url = new URL("http://192.168.1.10:4444/wd/hub");
 
 //                driver = new RemoteWebDriver(url, options);
-                driver = new EdgeDriver();
+                driver = new EdgeDriver(options);
                 driver.get("https://vins-udemy.s3.amazonaws.com/ds/strategy.html");
             }
             else if(browserType.equals("chrome") )
             {
                 log.info("Browser Type passed from command prompt is:",browserType);
                 ChromeOptions options = new ChromeOptions();
-                options.addArguments("--headless");
                 options.addArguments("--no-sandbox");
                 options.addArguments("--disable-dev-shm-usage");
-//                driver=new RemoteWebDriver(new URL("http://192.168.1.10:4444/wd/hub"),options);
+                options.addArguments("--headless");
 
+//                driver=new RemoteWebDriver(new URL("http://192.168.1.10:4444/wd/hub"),options);
+                driver=new ChromeDriver(options);
                 driver.get("https://vins-udemy.s3.amazonaws.com/ds/strategy.html");
             }
             else if(browserType.equalsIgnoreCase("local"))
@@ -62,7 +64,7 @@ private final Logger log = LogManager.getLogger(BaseClass.class);
                 driver.get("https://rahulshettyacademy.com/AutomationPractice/");
             }
             log.info("driver instance:",driver);
-            driver.manage().window().maximize();
+//            driver.manage().window().maximize();
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(src, new File(System.getProperty("user.dir") + "/Screenshots/"+"driverInstance"+".jpg"));
         }
