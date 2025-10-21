@@ -1,14 +1,15 @@
-name: smoke test workflow1
-on: push
+name: validate webapp
+on: workflow_dispatch
 jobs:
-  mySmokeTestWorkflow2:
+  sanitytest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: setup java 
+      - name: setup jdk
         uses: actions/checkout@v1
         with:
           java-version: 11
       - name: run with maven
         run: |
-              mvn clean test -Dtestng="testng.xml" -DbrowserType="chrome"
+             mvn clean test -Dtestng="testng.xml" -DbrowserType="chrome"
+  
