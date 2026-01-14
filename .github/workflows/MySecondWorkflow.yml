@@ -12,4 +12,9 @@ jobs:
       - name: run with maven
         run: |
              mvn clean test -Dtestng="testng.xml" -DbrowserType="chrome"
+      - name: upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: target/surefire-reports/
         
