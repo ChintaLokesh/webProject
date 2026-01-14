@@ -25,7 +25,7 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: Automation Test Results - ${{ github.job }}
-          to: recipient@example.com
+          to: lokeech@gmail.com
           from: GitHub Actions
           body: |
             The test execution is complete. 
