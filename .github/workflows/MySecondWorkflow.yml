@@ -2,7 +2,7 @@ name: mysecondworkfloe
 on: workflow_dispatch
 jobs:
   myjob:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - name: setup-jdk
@@ -17,4 +17,20 @@ jobs:
         with:
           name: test-reports
           path: target/surefire-reports/
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: Automation Test Results - ${{ github.job }}
+          to: recipient@example.com
+          from: GitHub Actions
+          body: |
+            The test execution is complete. 
+            Build Status: ${{ job.status }}
+            You can find the artifacts here: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          # To attach the report directly:
+          attachments: target/surefire-reports/emailable-report.html
         
