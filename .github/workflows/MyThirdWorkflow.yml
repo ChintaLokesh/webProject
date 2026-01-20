@@ -1,5 +1,5 @@
 name: Run the test scripts
-on: workflow_dispatch
+on: [workflow_dispatch,push]
 jobs:
   Run_the_sanity_tests:
     runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
         run: |
             mvn clean test -Dtestng="testng.xml" -DbrowserType="chrome"
       - name: upload artifacts
-        uses: actions/upload-artifacts@v5
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: target/
