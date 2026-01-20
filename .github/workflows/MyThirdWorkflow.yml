@@ -1,0 +1,21 @@
+name: Run the test scripts
+on: workflow_dispatch
+jobs:
+  Run_the_sanity_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: setup jdk
+        uses: actions/checkout@v5
+        with:
+          java-version: 17
+      - name: run with maven
+        run: |
+            mvn clean test -Dtestng="testng.xml" -DbrowserType="chrome"
+      - name: upload artifacts
+        uses: actions/upload-artifacts@v5
+        with:
+          name: test-reports
+          path: target/
+        
+  
